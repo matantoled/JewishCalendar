@@ -1,26 +1,16 @@
 body {
-  background-image: url("/images/bg-main.webp");
+  background-image: url("/images/bg-main.png");
   background-size: cover;
   background-color: #e4c190;
 }
 
-/*
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+h1 {
+  color: #ece6dd; 
+  letter-spacing: 5px;
+  text-align: center;
+  font-size: 70px;
+  font-family: "Secular One", "Assistant", sans-serif;
 }
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-th {
-  text-align: center ;
-}
-*/
 
 
 /* Warm & Classic — שקיפות חלקית לטבלה כך שרואים את הרקע מאחוריה */
@@ -71,7 +61,7 @@ th,td{
 /* מפרידי עמודות (קו משמאל לכל תא שאינו הראשון בשורה) */
 th + th,
 td + td {
-  border-left: 5px solid var(--rule);
+  border-inline-start: 5px solid var(--rule);
 }
 
 
@@ -80,7 +70,7 @@ thead th{
   background:var(--thead-bg-rgba);
   background:var(--thead-bg);
   font-weight:700;
-  border-bottom:1px solid var(--table-border);
+  border-bottom:5px solid var(--table-border);
 }
 
 /* זברה עדינה */
