@@ -5,12 +5,102 @@ body {
 }
 
 /*
-body {
-  margin: 0;                     /* מבטל רווח ברירת־מחדל של הדפדפן 
-  min-height: 100vh;             /* מבטיח גובה של מסך מלא 
-  background-color: #0b1220;     /* צבע גיבוי כהה במקרה שהתמונה לא נטענת 
-  background-size: cover;        /* מכסה את כל המסך בלי עיוות 
-  background-position: center;   /* ממקם למרכז במסכים שונים 
-  background-repeat: no-repeat;  /* מונע ריפיט של התמונה 
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
-  */
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  text-align: center ;
+}
+*/
+
+
+/* Warm & Classic — שקיפות חלקית לטבלה כך שרואים את הרקע מאחוריה */
+:root{
+  --table-border:#8f6a3a;      /* חום-זהוב למסגרת */
+  --table-text:#2d2a26;        /* טקסט כהה וקריא */
+  --table-bg-rgba:rgba(255,249,237,0.8);  /* ≈80% אטימות (fallback) */
+  --table-bg:#fff9edCC;        /* אותו דבר בהקס עם אלפא */
+  --thead-bg-rgba:rgba(233,196,143,0.9);  /* ≈90% אטימות */
+  --thead-bg:#e9c48fE6;
+  --stripe-bg-rgba:rgba(248,234,210,0.7); /* ≈70% אטימות */
+  --stripe-bg:#f8ead2B3;
+  --rule:#c4a277;              /* קווים פנימיים */
+  --hover-bg: rgba(233,196,143,0.75); /* היילייט חם, ~75% שקיפות */
+}
+
+/* אם יש לך עטיפה — לא חובה:  */
+/* .table-wrap{max-width:900px;margin:2rem auto;padding:0 1rem;} */
+
+table{
+ 
+  width: min(100% - 48px, 1100px); /* שוליים של ~24px מכל צד, ותקרת רוחב */
+  margin: 24px auto;               /* מרכז את הטבלה ומוסיף רווח אנכי קטן */ 
+  border-collapse:separate;
+  border-spacing:0;
+  color:var(--table-text);
+  /* רקע חצי-שקוף: קודם Fallback rgba, אח״כ hex עם אלפא */
+  background:var(--table-bg-rgba);
+  background:var(--table-bg);
+  border:5px solid var(--table-border);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 6px 14px rgba(0,0,0,.08);
+
+  /* טשטוש עדין של מה שמתחת (נתמך בעיקר כרום/ספארי/Edge) */
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+th,td{
+  padding:14px 16px;
+  border-bottom:5px solid var(--rule);
+  text-align:start;
+  font-size:16px;
+  line-height:1.45;
+}
+
+/* מפרידי עמודות (קו משמאל לכל תא שאינו הראשון בשורה) */
+th + th,
+td + td {
+  border-left: 5px solid var(--rule);
+}
+
+
+/* כותרת */
+thead th{
+  background:var(--thead-bg-rgba);
+  background:var(--thead-bg);
+  font-weight:700;
+  border-bottom:1px solid var(--table-border);
+}
+
+/* זברה עדינה */
+tbody tr:nth-child(even){
+  background:var(--stripe-bg-rgba);
+  background:var(--stripe-bg);
+}
+
+/* שורה אחרונה בלי קו תחתון כפול */
+tbody tr:last-child td{
+  border-bottom:none;
+}
+
+/* מעבר חלק לשינוי צבע על הובר */
+tbody tr {
+  transition: background-color .18s ease;
+}
+
+/* הדגשת שורה על הובר (ברור ונעים) */
+tbody tr:hover {
+  background-color: var(--hover-bg);
+}
+
